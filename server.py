@@ -1,6 +1,9 @@
+#imports
 import socket
 import threading
 
+
+#initializes server
 socketServer = socket.socket()
 
 host = socket.gethostname()
@@ -10,8 +13,10 @@ socketServer.bind((host, port))
 
 socketServer.listen(3)
 
+#array for client IP's
 clients=[]
 
+#sends message to all clients
 def broadcast(message):
     for client in clients:
         try:
@@ -19,11 +24,13 @@ def broadcast(message):
         except:
             clients.remove(client)
 
+#checks for/receives data from clients
 def handle(client):
     while True:
         data=client.recv(1024)
         broadcast(data)
 
+#allows client access and initializes handle thread
 def receive():
     while True:
         client, addr = socketServer.accept()
