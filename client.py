@@ -35,7 +35,7 @@ def hexify(r,g,b):
 #Creates messenger application
 root=Tk()
 root.title("Totally Rad Messaging App")
-root.configure(background=hexify(0,162,255))
+root.configure(background=hexify(255,0,0))
 
 messageView=tkinter.scrolledtext.ScrolledText(root)
 messageView.pack(pady=25)
