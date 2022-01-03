@@ -28,10 +28,14 @@ usernamescr.withdraw()
 username=simpledialog.askstring("Username","Enter a Username",parent=usernamescr)
 usernamescr.destroy()
 
+#Converts RGB Values to Hex for background color
+def hexify(r,g,b):
+    return f'#{r:02x}{g:02x}{b:02x}'
+
 #Creates messenger application
 root=Tk()
 root.title("Totally Rad Messaging App")
-root.configure(background='blue')
+root.configure(background=hexify(0,162,255))
 
 messageView=tkinter.scrolledtext.ScrolledText(root)
 messageView.pack(pady=25)
