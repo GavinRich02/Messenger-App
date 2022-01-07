@@ -4,15 +4,15 @@ import threading
 
 
 #initializes server
-socket = socket.socket()
+socketServer = socket.socket()
 
 host = socket.gethostname()
 port = 5000
 
-socket.bind((host, port))
+socketServer.bind((host, port))
 
 #Adjustable; Total number of connections that the program allows
-socket.listen(3)
+socketServer.listen(3)
 
 #array for client IP's
 clients=[]
@@ -34,11 +34,11 @@ def handle(client):
 #allows client access and initializes handle thread
 def receive():
     while True:
-        client, addr = socket.accept()
+        client, addr = socketServer.accept()
 
         clients.append(client)
 
         handleThread=threading.Thread(target=handle, args=(client,))
-        handleThread.start()
+        handleThread.start() 
 
 receive()
